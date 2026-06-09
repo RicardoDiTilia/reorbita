@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import { GradientBackground } from '../components/GradientBackground';
 import { Card } from '../components/Card';
 import { useTheme } from '../contexts/ThemeContext';
 import { useMissions } from '../contexts/MissionsContext';
+import { confirmAction } from '../utils/confirm';
 import { spacing, typography, radius } from '../theme';
 
 export const SettingsScreen: React.FC = () => {
@@ -14,10 +15,12 @@ export const SettingsScreen: React.FC = () => {
   const { missions, clear } = useMissions();
 
   const confirmClear = () => {
-    Alert.alert('Limpar histórico', `Remover ${missions.length} ${missions.length === 1 ? 'missão' : 'missões'}?`, [
-      { text: 'Cancelar', style: 'cancel' },
-      { text: 'Limpar', style: 'destructive', onPress: clear },
-    ]);
+    confirmAction(
+      'Limpar histórico',
+      `Remover ${missions.length} ${missions.length === 1 ? 'missão' : 'missões'}?`,
+      clear,
+      'Limpar'
+    );
   };
 
   const pillars = [
