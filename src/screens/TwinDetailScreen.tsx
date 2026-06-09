@@ -33,7 +33,7 @@ export const TwinDetailScreen: React.FC = () => {
   const onSchedule = (kind: RobotKind) => {
     const m = schedule(sat, t, kind);
     if (m) {
-      Alert.alert('Missão agendada', `${m.robotCallsign} foi designada para ${m.satelliteName}.`);
+      navigation.navigate('Tabs', { screen: 'Missions' });
     } else {
       Alert.alert('Indisponível', 'Nenhum robô compatível disponível no momento.');
     }
