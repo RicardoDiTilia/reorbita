@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="REORBITA" width="160" />
+</p>
+
 # REORBITA — Manutenção Orbital Inteligente
 
 > "Construímos um cemitério a 400 km de altura. A REORBITA transforma esse cemitério em uma oficina."

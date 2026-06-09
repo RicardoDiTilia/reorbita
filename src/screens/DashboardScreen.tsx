@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -68,10 +68,13 @@ export const DashboardScreen: React.FC = () => {
           }
         >
           <Animated.View entering={FadeInDown.duration(500)} style={styles.headerRow}>
-            <View>
-              <Text style={[typography.caption, { color: colors.primary, textTransform: 'uppercase', fontWeight: '800' }]}>
-                REORBITA
-              </Text>
+            <View style={{ flex: 1 }}>
+              <View style={styles.brandRow}>
+                <Image source={require('../../assets/logo.png')} style={styles.logo} resizeMode="contain" />
+                <Text style={[typography.caption, { color: colors.primary, textTransform: 'uppercase', fontWeight: '800', letterSpacing: 2 }]}>
+                  REORBITA
+                </Text>
+              </View>
               <Text style={[typography.display, { color: colors.text }]}>Centro de Controle</Text>
               <Text style={[typography.caption, { color: colors.textMuted, marginTop: 4 }]}>
                 Manutenção preditiva da frota orbital
@@ -299,6 +302,8 @@ const Stat: React.FC<{ label: string; value: string }> = ({ label, value }) => {
 
 const styles = StyleSheet.create({
   headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  brandRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 2 },
+  logo: { width: 34, height: 22 },
   themeBtn: {
     width: 44,
     height: 44,
